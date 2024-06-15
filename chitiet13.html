@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .product-detail {
+            display: flex;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+        }
+
+        .product-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .main-image {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .thumbnails {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-price,
+        .product-discount,
+        .product-summary,
+        .product-description {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+
+        .add-to-cart:active {
+            background-color: #398038;
+        }
+
+        .add-to-cart:focus {
+            outline: none;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            top: 10%;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-detail">
+        <div class="product-images">
+            <div class="main-image" onclick="openLightbox()">
+                <img id="mainImage" src="13.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnails">
+                <div class="thumbnail" onmouseover="changeImage('13.jpg')">
+                    <img src="13.jpg" alt="Thumbnail 1">
+                </div>
+                <div class="thumbnail" onmouseover="changeImage('ip13.jpg')">
+                    <img src="ip13.jpg" alt="Thumbnail 2">
+                </div>
+                <div class="thumbnail" onmouseover="changeImage('ip131.jpg')">
+                    <img src="ip131.jpg" alt="Thumbnail 3">
+                </div>
+                <div class="thumbnail" onmouseover="changeImage('ip132.jpg')">
+                    <img src="ip132.jpg" alt="Thumbnail 4">
+                </div>
+            </div>
+        </div>
+        <div class="product-info">
+            <h2 class="product-name">Iphone 13</h2>
+            <p class="product-price">Giá: 15.390.000đ</p>
+            <p class="product-discount">Giảm giá: 15%</p>
+            <p class="product-summary">Bản 128GB. Bảo hành 1 năm</p>
+            <p class="product-description">Bản màu hồng</p>
+            <button class="add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="13.jpg" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <script>
+        function changeImage(image) {
+            document.getElementById('mainImage').src = image;
+            document.getElementById('lightboxImage').src = image;
+        }
+
+        function openLightbox() {
+            document.getElementById('lightbox').style.display = "block";
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = "none";
+        }
+    </script>
+</body>
+</html>

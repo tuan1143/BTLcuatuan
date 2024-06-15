@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Đăng ký</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f2f5;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                background-color: #ffffff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
+            }
+            h2 {
+                margin-bottom: 20px;
+                color: #333;
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"] {
+                width: 100%;
+                padding: 15px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            }
+            input[type="text"]:focus,
+            input[type="password"]:focus,
+            input[type="email"]:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                outline: none;
+            }
+            button {
+                width: 48%;
+                padding: 15px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin: 10px 1%;
+                transition: background-color 0.3s ease;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            button:active {
+                background-color: #004494;
+            }
+            button:nth-of-type(2) {
+                background-color: #dc3545;
+            }
+            button:nth-of-type(2):hover {
+                background-color: #c82333;
+            }
+            button:nth-of-type(2):active {
+                background-color: #a71d2a;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="registrationForm">
+            <h2>Đăng ký</h2>
+            <input type="text" id="regUsername" placeholder="Username">
+            <input type="password" id="regPassword" placeholder="Password">
+            <input type="password" id="regRePassword" placeholder="Re-enter Password">
+            <input type="email" id="regEmail" placeholder="Email">
+            <button onclick="register()">Đăng ký</button>
+            <button onclick="cancelRegistration()">Hủy</button>
+        </div>
+        <script>
+            function register() {
+                var regUsername = document.getElementById("regUsername").value;
+                var regPassword = document.getElementById("regPassword").value;
+                var regRePassword = document.getElementById("regRePassword").value;
+                var regEmail = document.getElementById("regEmail").value;
+
+                if (regUsername === "" || regPassword === "" || regRePassword === "" || regEmail === "") {
+                    alert("Vui lòng nhập đầy đủ thông tin.");
+                    return;
+                }
+
+                if (regPassword !== regRePassword) {
+                    alert("Mật khẩu và mật khẩu xác nhận không khớp.");
+                    return;
+                }
+
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(regEmail)) {
+                    alert("Email không hợp lệ.");
+                    return;
+                }
+                alert("Đăng ký thành công.");
+                window.location.href = "index.html"; 
+            }
+
+            function cancelRegistration() {
+                window.location.href = "index.html";
+            }
+        </script>
+    </body>
+</html>
